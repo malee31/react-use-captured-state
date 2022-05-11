@@ -1,7 +1,7 @@
 {
-  "name": "react-form-capture",
+  "name": "react-use-captured-state",
   "version": "1.0.0",
-  "description": "Quickly create components that can access values from inputs inside it like forms and form inputs. Simply add a container and replace useState with a new hook!",
+  "description": "Quickly create components that can access values from components inside it like forms and form inputs. Simply add a container and replace useState with a new hook!",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
