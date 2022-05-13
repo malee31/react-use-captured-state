@@ -1,6 +1,6 @@
 {
   "name": "use-captured-state",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Quickly create components that can access values from components inside it like forms and form inputs. Simply add a container and replace useState with a new hook!",
   "main": "build/index.js",
   "type": "module",
@@ -21,7 +21,7 @@
   "author": "Marvin Lee",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^18.1.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
@@ -30,7 +30,7 @@
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.5",
     "nodemon": "^2.0.16",
-    "react": "^18.1.0",
+    "react": ">=16.8.0",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
   }
