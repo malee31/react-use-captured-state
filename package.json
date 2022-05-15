@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
+    "jsdoc": "jsdoc -c jsdoc.json",
     "continuous-build": "nodemon --exec \"npm run build && npm link ../useformcaptureproject/node_modules/react\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +30,8 @@
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.5",
+    "docdash": "^1.2.0",
+    "jsdoc": "^3.6.10",
     "nodemon": "^2.0.16",
     "react": ">=16.8.0",
     "webpack": "^5.72.1",
