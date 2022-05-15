@@ -18,6 +18,8 @@
 	},
 	"docdash": {
 		"sort": true,
-		"search": true
+		"search": true,
+		"typedefs": true,
+		"wrap": true
 	}
 }

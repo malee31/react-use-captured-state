@@ -1,0 +1,9 @@
+{
+	"verbose": false,
+	"ignore": [
+		"*.test.js",
+		"node_modules/",
+		"docs/",
+		"private/"
+	]
+}

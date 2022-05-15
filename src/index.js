@@ -1,9 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
 /**
- * Contains the captured value object and all the methods to modify it
+ * Contains the captured value object and all the methods to modify it. <br>
+ * Is the return value of the [useCapturedProviderValue() hook]{@link useCapturedProviderValue}
  * @typedef {Object} CaptureContextValue
- * @property {Object} values - The captured values stored in the context. Should only be modified using the other methods in this object
+ * @property {Object} values - The captured values stored in the context. Should only be modified using the other methods in this object. <br>
+ *                             _Note: This will initially be an empty object and is only filled with default values on the second render!_
  * @property {updateKey} updateKey - Function used to update a single key's value in the captured value object
  * @property {batchUpdateKeys} batchUpdateKeys - Function used to update a multiple keys' value in the captured value object
  * @property {removeKey} removeKey - Function used to remove a single keys and its value from the captured value object
@@ -30,7 +32,8 @@ export function useCapturedProviderValue() {
 	const [capturedValues, setCapturedValues] = useState({});
 
 	/**
-	 * Updates the value of a single key in the captured values object
+	 * Updates the value of a single key in the captured values object. <br>
+	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
 	 * @name updateKey
 	 * @function updateKey
 	 * @param {string} key - Name passed into useCapturedState()
@@ -45,7 +48,8 @@ export function useCapturedProviderValue() {
 	};
 
 	/**
-	 * Updates multiple values in the captured values object at once
+	 * Updates multiple values in the captured values object at once. <br>
+	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
 	 * @name batchUpdateKeys
 	 * @function batchUpdateKeys
 	 * @param {Object} batchValues - Object to merge into the captured values object (name: value pairs)
@@ -62,7 +66,8 @@ export function useCapturedProviderValue() {
 	};
 
 	/**
-	 * Removes a single key and its value from the captured values object
+	 * Removes a single key and its value from the captured values object. <br>
+	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
 	 * @name removeKey
 	 * @function removeKey
 	 * @param {string} key - Key to remove from the captured values object
@@ -76,7 +81,8 @@ export function useCapturedProviderValue() {
 	};
 
 	/**
-	 * Removes multiple keys and their values from the captured values object at once
+	 * Removes multiple keys and their values from the captured values object at once. <br>
+	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
 	 * @name batchRemoveKeys
 	 * @function batchRemoveKeys
 	 * @param {string[]} keyList - Array of keys to remove from the captured values object
@@ -101,7 +107,7 @@ export function useCapturedProviderValue() {
 
 /**
  * Container for all the elements that will use useCapturedState(). Will hold all the captured values from useCapturedState()
- * @param {CaptureContextValue} value - Context value. Obtain it with a call to useCapturedProviderValue().
+ * @param {CaptureContextValue} value - Context value. Obtain it with a call to [useCapturedProviderValue()]{@link useCapturedProviderValue}.
  * @param {JSX.Element|string} children - Elements to render inside provider. These elements will have access to the captured values object through useCapturedState()
  * @returns {JSX.Element} Returns the provider that will contain a section a the page that uses useCapturedState()
  * @constructor
@@ -115,9 +121,9 @@ export function ImmediateCapturedProvider({ value, children }) {
 }
 
 /**
- * Container for all the elements that will use useCapturedState(). Will hold all the captured values from useCapturedState()
- * Only difference between this and ImmediateCapturedProvider is that CapturedProvider does not allow the functional component rendering it to access the captured values object
- * In other words, the useCapturedProviderValue() call is taken care of internally instead
+ * Container for all the elements that will use useCapturedState(). Will hold all the captured values from useCapturedState(). <br>
+ * Only difference between this and ImmediateCapturedProvider is that CapturedProvider does not allow the functional component rendering it to access the captured values object. <br>
+ * Equivalent to an instance of `<ImmediateCapturedProvider value={useCapturedProviderValue()}>` (Open the source code. That's pretty much all this function is)
  * @param {JSX.Element|string} children - Elements to render inside provider. These elements will have access to the captured values object through useCapturedState()
  * @returns {JSX.Element} Returns the provider that will contain a section a the page that uses useCapturedState()
  * @constructor
