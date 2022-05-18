@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CapturedProvider.html">CapturedProvider</a></li><li><a href="ImmediateCapturedProvider.html">ImmediateCapturedProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#batchRemoveKeys">batchRemoveKeys</a></li><li><a href="global.html#batchUpdateKeys">batchUpdateKeys</a></li><li><a href="global.html#CaptureContextValue">CaptureContextValue</a></li><li><a href="global.html#captureDefaultValue">captureDefaultValue</a></li><li><a href="global.html#removeKey">removeKey</a></li><li><a href="global.html#updateKey">updateKey</a></li><li><a href="global.html#useCaptureContextValue">useCaptureContextValue</a></li><li><a href="global.html#useCapturedProviderValue">useCapturedProviderValue</a></li><li><a href="global.html#useCapturedValues">useCapturedValues</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CapturedProvider.html">CapturedProvider</a></li><li><a href="ImmediateCapturedProvider.html">ImmediateCapturedProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#batchRemoveKeys">batchRemoveKeys</a></li><li><a href="global.html#batchUpdateKeys">batchUpdateKeys</a></li><li><a href="global.html#CaptureContextValue">CaptureContextValue</a></li><li><a href="global.html#captureDefaultValue">captureDefaultValue</a></li><li><a href="global.html#removeKey">removeKey</a></li><li><a href="global.html#updateKey">updateKey</a></li><li><a href="global.html#useCaptureContextValue">useCaptureContextValue</a></li><li><a href="global.html#useCapturedProviderValue">useCapturedProviderValue</a></li><li><a href="global.html#useCapturedState">useCapturedState</a></li><li><a href="global.html#useCapturedValues">useCapturedValues</a></li></ul>
 </nav>
 
 <div id="main">
@@ -984,6 +984,222 @@ Allows the functional component that renders the ImmediateCapturedProvider to ha
 
     
 
+    <h4 class="name" id="useCapturedState"><span class="type-signature"></span>useCapturedState<span class="signature">(name, defaultValue<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;(string|*), (function(*): void)>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line163">line 163</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description usertext">
+    <p>A hook similar to useState that allows a component to edit a specific key in the captured value object and allow access to it by anything above it</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Name of the captured state. Used as a key in the captured values object</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>""</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Default value to set as the state. Similar to first argument of useState()</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Return value is similar to useState(). An array with [value, setValue] as its entries</p>
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;(string|*), (function(*): void)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
     <h4 class="name" id="useCapturedValues"><span class="type-signature"></span>useCapturedValues<span class="signature">()</span><span class="type-signature"> &rarr; {CaptureContextValue.value}</span></h4>
 
     
@@ -1331,7 +1547,7 @@ Is the return value of the <a href="global.html#useCapturedProviderValue">useCap
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed May 18 2022 20:23:21 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed May 18 2022 20:27:12 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
