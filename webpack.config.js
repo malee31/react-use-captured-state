@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 
 export default {
 	mode: "production",
-	entry: resolve(__dirname, "src", "index.js"),
+	entry: resolve(__dirname, "lib", "index.js"),
 	experiments: {
 		outputModule: true,
 	},
