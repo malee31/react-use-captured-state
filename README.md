@@ -1,10 +1,10 @@
 # UseCapturedState()
 A simple hook that allows a parent element to access a specific slice of state from its children.  
 Perfect for quick forms and related components without needing to explicitly pass props down from a parent element!  
-[API Documentation can be found here!](https://malee31.github.io/use-captured-state)
 
 # Quick Start Example
-The following is a full example of how to use most of the exports provided by use-captured-state. The example shows a very simple form
+The following is a full example of how to use most of the exports provided by use-captured-state. The example shows a very simple form.  
+[Full API Documentation can be found here!](https://malee31.github.io/use-captured-state)
 ```js
 // Importing all items from use-captured-state for examples
 import useCapturedState, {ImmediateCapturedProvider, CapturedProvider, useCapturedProviderValue, useCaptureContextValue, useCapturedValues} from "use-captured-state";
