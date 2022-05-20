@@ -29,7 +29,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="CapturedProvider.html">CapturedProvider</a></li><li><a href="ImmediateCapturedProvider.html">ImmediateCapturedProvider</a></li></ul><h3>Global</h3><ul><li><a href="global.html#batchRemoveKeys">batchRemoveKeys</a></li><li><a href="global.html#batchUpdateKeys">batchUpdateKeys</a></li><li><a href="global.html#CaptureContextValue">CaptureContextValue</a></li><li><a href="global.html#captureDefaultValue">captureDefaultValue</a></li><li><a href="global.html#removeKey">removeKey</a></li><li><a href="global.html#updateKey">updateKey</a></li><li><a href="global.html#useCaptureContextValue">useCaptureContextValue</a></li><li><a href="global.html#useCapturedProviderValue">useCapturedProviderValue</a></li><li><a href="global.html#useCapturedState">useCapturedState</a></li><li><a href="global.html#useCapturedValues">useCapturedValues</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module-use-captured-state.CapturedProvider.html">CapturedProvider</a></li><li><a href="module-use-captured-state.ImmediateCapturedProvider.html">ImmediateCapturedProvider</a></li></ul><h3>Modules</h3><ul><li><a href="module-use-captured-state.html">use-captured-state</a><ul class='methods'><li data-type='method'><a href="module-use-captured-state.html#.useCaptureContextValue">useCaptureContextValue</a></li><li data-type='method'><a href="module-use-captured-state.html#.useCapturedProviderValue">useCapturedProviderValue</a></li><li data-type='method'><a href="module-use-captured-state.html#.useCapturedState">useCapturedState</a></li><li data-type='method'><a href="module-use-captured-state.html#.useCapturedValues">useCapturedValues</a></li></ul></li></ul><h3>Global</h3><ul><li><a href="global.html#batchRemoveKeys">batchRemoveKeys</a></li><li><a href="global.html#batchUpdateKeys">batchUpdateKeys</a></li><li><a href="global.html#CaptureContextValue">CaptureContextValue</a></li><li><a href="global.html#removeKey">removeKey</a></li><li><a href="global.html#updateKey">updateKey</a></li></ul>
 </nav>
 
 <div id="main">
@@ -44,12 +44,52 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { createContext, useContext, useEffect, useState } from "react";
+            <pre class="prettyprint source linenums"><code>/**
+ * Index file for the use-captured-state package &lt;br>
+ * Contains everything ever needed to be imported from the package
+ * @module use-captured-state
+ */
+
+import { createContext, useContext, useEffect, useState } from "react";
+
+/**
+ * Updates the value of a single key in the captured values object. &lt;br>
+ * Part of the return value of [useCapturedProviderValue()]{@link module:use-captured-state.useCapturedProviderValue}
+ * @global
+ * @typedef {function} updateKey
+ * @param {string} key - Name passed into useCapturedState()
+ * @param value - Value to update to at the given key
+ */
+
+/**
+ * Updates multiple values in the captured values object at once. &lt;br>
+ * Part of the return value of [useCapturedProviderValue()]{@link module:use-captured-state.useCapturedProviderValue}
+ * @global
+ * @typedef {function} batchUpdateKeys
+ * @param {Object} batchValues - Object to merge into the captured values object (name: value pairs)
+ */
+
+/**
+ * Removes a single key and its value from the captured values object. &lt;br>
+ * Part of the return value of [useCapturedProviderValue()]{@link module:use-captured-state.useCapturedProviderValue}
+ * @global
+ * @typedef {function} removeKey
+ * @param {string} key - Key to remove from the captured values object
+ */
+
+/**
+ * Removes multiple keys and their values from the captured values object at once. &lt;br>
+ * Part of the return value of [useCapturedProviderValue()]{@link module:use-captured-state.useCapturedProviderValue}
+ * @global
+ * @typedef {function} batchRemoveKeys
+ * @param {string[]} keyList - Array of keys to remove from the captured values object
+ */
 
 /**
  * Contains the captured value object and all the methods to modify it. &lt;br>
- * Is the return value of the [useCapturedProviderValue() hook]{@link useCapturedProviderValue}
- * @typedef {Object} CaptureContextValue
+ * Is the return value of the [useCapturedProviderValue() hook]{@link module:use-captured-state.useCapturedProviderValue}
+ * @global
+ * @typedef CaptureContextValue
  * @property {Object} values - The captured values stored in the context. Should only be modified using the other methods in this object. &lt;br>
  *                             _Note: This will initially be an empty object and is only filled with default values on the second render!_
  * @property {updateKey} updateKey - Function used to update a single key's value in the captured value object
@@ -65,7 +105,7 @@ const captureDefaultValue = {
 	removeKey: () => {},
 	batchRemoveKeys: () => {},
 	values: {}
-}
+};
 
 const CaptureContext = createContext(captureDefaultValue);
 
@@ -77,14 +117,7 @@ const CaptureContext = createContext(captureDefaultValue);
 export function useCapturedProviderValue() {
 	const [capturedValues, setCapturedValues] = useState({});
 
-	/**
-	 * Updates the value of a single key in the captured values object. &lt;br>
-	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
-	 * @name updateKey
-	 * @function updateKey
-	 * @param {string} key - Name passed into useCapturedState()
-	 * @param value - Value to update to at the given key
-	 */
+	/** @type updateKey */
 	const updateKey = (key, value) => {
 		setCapturedValues(oldState => {
 			const newValue = { ...oldState };
@@ -93,13 +126,7 @@ export function useCapturedProviderValue() {
 		});
 	};
 
-	/**
-	 * Updates multiple values in the captured values object at once. &lt;br>
-	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
-	 * @name batchUpdateKeys
-	 * @function batchUpdateKeys
-	 * @param {Object} batchValues - Object to merge into the captured values object (name: value pairs)
-	 */
+	/** @type batchUpdateKeys */
 	const batchUpdateKeys = batchValues => {
 		setCapturedValues(oldState => {
 			const newValue = { ...oldState };
@@ -111,13 +138,7 @@ export function useCapturedProviderValue() {
 		});
 	};
 
-	/**
-	 * Removes a single key and its value from the captured values object. &lt;br>
-	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
-	 * @name removeKey
-	 * @function removeKey
-	 * @param {string} key - Key to remove from the captured values object
-	 */
+	/** @type removeKey */
 	const removeKey = key => {
 		setCapturedValues(oldState => {
 			const newValue = { ...oldState };
@@ -126,13 +147,7 @@ export function useCapturedProviderValue() {
 		});
 	};
 
-	/**
-	 * Removes multiple keys and their values from the captured values object at once. &lt;br>
-	 * Part of the return value of [useCapturedProviderValue()]{@link useCapturedProviderValue}
-	 * @name batchRemoveKeys
-	 * @function batchRemoveKeys
-	 * @param {string[]} keyList - Array of keys to remove from the captured values object
-	 */
+	/** @type batchRemoveKeys */
 	const batchRemoveKeys = keyList => {
 		setCapturedValues(oldState => {
 			const newValue = { ...oldState };
@@ -153,7 +168,7 @@ export function useCapturedProviderValue() {
 
 /**
  * Container for all the elements that will use useCapturedState(). Will hold all the captured values from useCapturedState()
- * @param {CaptureContextValue} value - Context value. Obtain it with a call to [useCapturedProviderValue()]{@link useCapturedProviderValue}.
+ * @param {CaptureContextValue} value - Context value. Obtain it with a call to [useCapturedProviderValue()]{@link module:use-captured-state.useCapturedProviderValue}.
  * @param {JSX.Element|string} children - Elements to render inside provider. These elements will have access to the captured values object through useCapturedState()
  * @returns {JSX.Element} Returns the provider that will contain a section a the page that uses useCapturedState()
  * @constructor
@@ -233,7 +248,7 @@ export default useCapturedState;</code></pre>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Wed May 18 2022 20:27:12 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a> on Fri May 20 2022 19:19:45 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
